@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kyoto &amp; Hakone · Demo Itinerary · April 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --sand: #FEFAF5;
+  --dark-sand: #F3EBE2;
+  --shell: #E5DBD0;
+  --dark-shell: #BDB1A4;
+  --stone: #827363;
+  --dark-stone: #63574A;
+  --black-sand: #131313;
+  --sangria: #870D13;
+  --olive: #77742A;
+  --indigo: #333880;
+  --warn-bg: #fdf3dd;
+  --warn-border: #c49a1a;
+  --warn-text: #6b4e00;
+  --line: #E5DBD0;
+  --line-soft: #EFE7DC;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--sand); }
+body { font-family: var(--serif); font-size: 16px; line-height: 1.6; color: var(--dark-stone); -webkit-font-smoothing: antialiased; }
+
+/* ── HEADER ── */
+.page-header {
+  background: var(--sand);
+  text-align: center;
+  padding: 52px 32px 38px;
+  border-bottom: 2px solid var(--black-sand);
+}
+.wordmark {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 44px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--black-sand);
+  margin-bottom: 28px;
+  padding-right: 0.38em; /* optical compensation for trailing tracking */
+}
+.page-header h1 {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  color: var(--stone);
+  margin: 0 0 5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+.stone-rule { width: 36px; height: 1px; background: var(--dark-shell); margin: 14px auto; }
+.header-sub {
+  font-family: var(--serif);
+  font-size: 15px;
+  color: var(--stone);
+  font-style: italic;
+  margin-bottom: 4px;
+}
+.header-byline {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dark-shell);
+}
+
+/* ── REGION SEPARATOR ── */
+.region-sep {
+  background: var(--shell);
+  padding: 10px 24px;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dark-stone);
+  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+}
+
+/* ── DAY ROWS ── */
+.day-row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  border-bottom: 1px solid var(--line-soft);
+  min-height: 60px;
+}
+.day-row:last-child { border-bottom: none; }
+.day-date {
+  padding: 16px 12px 16px 24px;
+  border-right: 1px solid var(--line);
+  background: var(--sand);
+}
+.day-date .dm {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--black-sand);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.day-date .dow {
+  display: block;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dark-shell);
+  margin-top: 3px;
+}
+.day-cell {
+  padding: 16px 24px;
+  border-left: 3px solid var(--shell);
+}
+.seg { margin-bottom: 16px; }
+.seg:last-child { margin-bottom: 0; }
+.seg-label {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dark-shell);
+  margin-bottom: 3px;
+}
+.seg-title {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--black-sand);
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+.seg-body {
+  font-family: var(--serif);
+  font-size: 15px;
+  color: var(--dark-stone);
+  line-height: 1.55;
+}
+.seg-body ul { margin: 5px 0; padding-left: 18px; }
+.seg-body ul li { margin-bottom: 3px; }
+.seg-body table { font-size: 14px; border-collapse: collapse; margin: 6px 0; width: auto; }
+.seg-body table td { padding: 3px 16px 3px 0; vertical-align: top; color: var(--dark-stone); }
+.seg-body table td:first-child { color: var(--stone); white-space: nowrap; }
+.seg-divider { border: 0; border-top: 1px dashed var(--line); margin: 14px 0; }
+
+/* flight pill */
+.flight-route {
+  display: flex; align-items: center; gap: 10px;
+  margin: 6px 0 8px;
+}
+.iata-big {
+  font-family: var(--sans);
+  font-size: 24px; font-weight: 400;
+  color: var(--black-sand);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.route-arrow {
+  flex: 1; height: 1px; background: var(--dark-shell);
+  position: relative;
+}
+.route-arrow::after {
+  content: '›'; position: absolute; right: -4px; top: -9px;
+  font-size: 16px; color: var(--dark-shell);
+}
+.flight-meta {
+  display: flex; gap: 24px; margin-top: 4px;
+  font-size: 14px; color: var(--stone);
+}
+.flight-meta span strong {
+  display: block;
+  font-family: var(--sans);
+  font-size: 15px;
+  color: var(--black-sand);
+  font-weight: 600;
+  margin-bottom: 1px;
+}
+
+/* ── PER-FAMILY FLIGHT COLUMNS ── */
+.flight-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-top: 14px;
+  border-top: 1px dashed var(--line);
+}
+.flight-col { padding: 12px 18px 2px 0; }
+.flight-col + .flight-col {
+  padding-left: 18px;
+  padding-right: 0;
+  border-left: 1px dashed var(--line);
+}
+.fam-tag {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dark-shell);
+  margin-bottom: 7px;
+}
+.flight-route-sm { display: flex; align-items: center; gap: 8px; margin: 4px 0 8px; }
+.iata-sm {
+  font-family: var(--sans);
+  font-size: 17px; font-weight: 400;
+  color: var(--black-sand);
+  letter-spacing: -0.02em; line-height: 1;
+}
+.fam-row {
+  font-family: var(--serif);
+  font-size: 14px; color: var(--stone);
+  line-height: 1.5; margin-bottom: 2px;
+}
+.fam-row strong { color: var(--black-sand); font-weight: 600; }
+.fam-note {
+  font-family: var(--serif);
+  font-size: 13px; color: var(--warn-text);
+  background: var(--warn-bg);
+  border-left: 2px solid var(--warn-border);
+  padding: 6px 9px; margin-top: 8px; line-height: 1.45;
+}
+
+/* ── BADGES ── */
+.badge {
+  display: inline-block;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 1px;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+.badge.confirmed { background: #dff1e1; color: #3a6e45; }
+.badge.pending    { background: var(--warn-bg); color: #8a6510; }
+.badge.urgent     { background: #f7dee1; color: #8a2020; }
+.badge.tbd        { background: var(--shell); color: var(--stone); }
+
+/* ── CALLOUT ── */
+.callout {
+  border-left: 3px solid var(--dark-shell);
+  padding: 9px 14px;
+  margin: 8px 0;
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+.callout.warn  { border-color: var(--warn-border); background: var(--warn-bg); color: var(--warn-text); }
+.callout.info  { border-color: var(--indigo); background: #eceef8; color: #222558; }
+.callout.note  { border-color: var(--dark-shell); background: var(--dark-sand); color: var(--dark-stone); }
+.callout-label {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+}
+.callout.warn .callout-label { color: var(--warn-border); }
+.callout.info .callout-label { color: var(--indigo); }
+
+/* ── TRAIN COMPARISON ── */
+.train-col-headers {
+  display: grid;
+  grid-template-columns: 90px 1fr 1fr;
+  background: var(--black-sand);
+  color: #fff;
+}
+.train-col-headers .tch {
+  padding: 10px 20px;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.train-col-headers .tch.b { background: rgba(119,116,42,0.3); }
+
+.train-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 1fr;
+  border-bottom: 1px solid var(--line-soft);
+}
+.train-row .day-date { border-right: 1px solid var(--line); }
+.train-cell {
+  padding: 13px 20px;
+  border-left: 3px solid var(--indigo);
+  border-right: 1px solid var(--line);
+  font-size: 15px;
+  color: var(--dark-stone);
+  line-height: 1.5;
+  font-family: var(--serif);
+}
+.train-cell.b {
+  background: var(--dark-sand);
+  border-left: 3px solid var(--olive);
+  border-right: none;
+}
+.train-cell strong { color: var(--black-sand); }
+.opt-tag {
+  display: inline-block;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--indigo);
+  padding: 2px 8px;
+  border-radius: 1px;
+  margin-bottom: 7px;
+}
+.opt-tag.b { background: var(--olive); }
+.train-price {
+  font-family: var(--sans);
+  font-size: 1.4rem;
+  color: var(--indigo);
+  margin: 6px 0 1px;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.train-price.b { color: var(--olive); }
+.train-price-note { font-size: 13px; color: var(--stone); margin-bottom: 8px; }
+.yes { color: #3a6e45; font-weight: 600; }
+.no  { color: var(--dark-shell); }
+
+/* ── OPEN ITEMS ── */
+.open-items-section {
+  padding: 32px 24px;
+  background: var(--sand);
+  border-top: 2px solid var(--black-sand);
+}
+.section-h2 {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--black-sand);
+  margin: 0 0 16px;
+}
+.items-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.items-table th {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--stone);
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+.items-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--line-soft);
+  vertical-align: top;
+  font-family: var(--serif);
+  color: var(--dark-stone);
+  line-height: 1.45;
+}
+.items-table tr:last-child td { border-bottom: none; }
+.items-table td:first-child { font-weight: 700; color: var(--black-sand); }
+
+/* ── FOOTER ── */
+.doc-footer {
+  background: var(--black-sand);
+  color: rgba(255,255,255,0.45);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 28px;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.doc-footer strong { color: rgba(255,255,255,0.8); }
+
+/* ── PRINT ── */
+.no-print { text-align: right; padding: 10px 20px; background: var(--dark-sand); border-bottom: 1px solid var(--line); }
+.btn-print {
+  font-family: var(--sans); font-size: 13px; letter-spacing: 0.08em;
+  cursor: pointer; background: var(--sand); border: 1px solid var(--line);
+  padding: 7px 16px; color: var(--dark-stone); text-transform: uppercase;
+}
+.btn-print:hover { border-color: var(--stone); }
+@media print {
+  .no-print { display: none !important; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .day-row, .train-row { break-inside: avoid; }
+}
+@media (max-width: 600px) {
+  .day-row { grid-template-columns: 68px 1fr; }
+  .train-col-headers, .train-row { grid-template-columns: 68px 1fr 1fr; }
+  .day-date { padding: 12px 8px 12px 12px; }
+  .day-cell { padding: 12px 14px; }
+  .flight-pair { grid-template-columns: 1fr; }
+  .flight-col { padding: 12px 0 2px; }
+  .flight-col + .flight-col {
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px dashed var(--line);
+  }
+}
+
+.opt-tag{display: inline-block;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--indigo);
+  padding: 2px 8px;
+  border-radius: 1px;
+  margin-bottom: 7px;}
+.opt-tag.b{background: var(--olive);}
+.intro-block{padding: 28px 32px 24px; background: var(--sand); border-bottom: 1px solid var(--line);}
+.intro-block p{font-size: 15.5px; line-height: 1.65; color: var(--dark-stone); margin: 0 0 12px;}
+.intro-block p:last-child{margin: 0;}
+.glance{display: grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); border-top: 1px solid var(--line);}
+.glance div{padding: 16px 20px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);}
+.glance div:last-child{border-right: none;}
+.glance .g-label{font-family: var(--sans); font-weight: 600; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--dark-shell); margin-bottom: 5px;}
+.glance .g-val{font-family: var(--sans); font-size: 15px; color: var(--black-sand); letter-spacing: -.01em; line-height: 1.3;}
+.opt-head{padding: 30px 32px 0; background: var(--sand);}
+.opt-eyebrow{font-family: var(--sans); font-weight: 600; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--stone); margin-bottom: 8px;}
+.opt-title{font-family: var(--sans); font-weight: 400; font-size: clamp(1.5rem,4vw,2.1rem); color: var(--black-sand); letter-spacing: -.02em; margin: 0 0 4px;}
+.opt-place{font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--stone); margin: 0 0 18px;}
+.opt-body{padding: 0 32px 26px; background: var(--sand);}
+.opt-lead{font-size: 15.5px; line-height: 1.68; color: var(--dark-stone); margin: 0 0 18px;}
+.fact-grid{display: grid; grid-template-columns: repeat(auto-fit,minmax(170px,1fr)); gap: 0; border: 1px solid var(--line); border-radius: 5px; overflow: hidden; margin: 0 0 22px;}
+.fact-grid div{padding: 13px 16px; border-right: 1px solid var(--line);}
+.fact-grid div:last-child{border-right: none;}
+.fact-lab{font-family: var(--sans); font-weight: 600; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--dark-shell); margin-bottom: 4px;}
+.fact-val{font-family: var(--sans); font-size: 14px; color: var(--black-sand); line-height: 1.35;}
+.sub-h{font-family: var(--sans); font-weight: 600; font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--stone); margin: 22px 0 10px;}
+.tick{list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 5px 26px;}
+.tick li{font-size: 14.5px; color: var(--dark-stone); padding-left: 16px; position: relative; line-height: 1.5;}
+.tick li::before{content: '\2014'; position: absolute; left: 0; color: var(--dark-shell);}
+.tick.single{grid-template-columns: 1fr;}
+.price-card{background: var(--black-sand); color: #fff; border-radius: 6px; padding: 22px 26px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; margin-top: 24px;}
+.price-label{font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 5px;}
+.price-amount{font-family: var(--sans); font-size: clamp(1.7rem,4.5vw,2.3rem); letter-spacing: -.03em; color: #fff; line-height: 1;}
+.price-pp{font-family: var(--serif); font-style: italic; font-size: 13.5px; color: rgba(255,255,255,.55); margin-top: 6px;}
+.price-side{font-size: 13px; color: rgba(255,255,255,.6); max-width: 300px; line-height: 1.5;}
+.note-soft{background: var(--dark-sand); border-left: 3px solid var(--shell); font-size: 14px; color: var(--dark-stone); padding: 12px 16px; margin: 20px 0 0; line-height: 1.55;}
+.next-steps{padding: 28px 32px; background: var(--dark-sand);}
+.next-steps h2{font-family: var(--sans); font-weight: 400; font-size: 1.15rem; letter-spacing: .03em; color: var(--black-sand); margin: 0 0 14px;}
+.step-list{list-style: none; margin: 0; padding: 0;}
+.step-list li{display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 15px; color: var(--dark-stone); line-height: 1.55;}
+.step-list li:last-child{border-bottom: none;}
+.step-num{font-family: var(--sans); font-weight: 600; font-size: 13px; color: var(--stone); min-width: 22px; text-align: right; padding-top: 1px;}
+.footnote{padding: 0 32px 26px; font-size: 12.5px; color: var(--stone); line-height: 1.6; font-style: italic;}
+
+.yv-slide.ph{display:flex;align-items:flex-end;justify-content:flex-start;padding:16px 18px 34px;color:rgba(255,255,255,.92);
+  font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
+.ph-1{background:linear-gradient(135deg,#C9B6A3,#8E7B69);} .ph-2{background:linear-gradient(135deg,#A9B19A,#6F7A5E);}
+.ph-3{background:linear-gradient(135deg,#C7A7A0,#8A5F57);} .ph-4{background:linear-gradient(135deg,#9FA6BF,#5E6688);}
+.yv-hero .yv-slide.ph{font-size:12px;padding-bottom:40px;}
+.glance div div,.fact-grid div div{padding:0;border:none;}
+.demo-ribbon{background:var(--indigo);color:#fff;text-align:center;font-family:var(--sans);font-size:12px;letter-spacing:.08em;padding:7px 12px;}
+
+</style>
+</head>
+<body>
+<style id="yv-ui-style">
+.doc{max-width:980px;margin:0 auto;background:var(--sand);box-shadow:0 6px 40px rgba(19,19,19,0.06);}
+.yv-carousel{position:relative;width:100%;overflow:hidden;border-radius:8px;background:var(--dark-sand,#F3EBE2);}
+.yv-carousel .yv-track{display:flex;height:100%;transition:transform .45s cubic-bezier(.4,0,.2,1);}
+.yv-carousel .yv-slide{flex:0 0 100%;width:100%;height:100%;display:block;object-fit:cover;}
+.yv-carousel:not(.yv-hero){aspect-ratio:3/2;width:100%;max-width:520px;}
+.yv-carousel.yv-hero{height:clamp(260px,44vh,460px);border-radius:0;}
+.yv-carousel.yv-hero .yv-slide{object-position:center 42%;}
+.yv-carousel .yv-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(19,19,19,.42);color:#fff;border:1px solid rgba(255,255,255,.35);width:36px;height:36px;border-radius:50%;font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:3;transition:background .2s;}
+.yv-carousel .yv-arrow:hover{background:rgba(19,19,19,.72);}
+.yv-carousel .yv-arrow.prev{left:10px;}.yv-carousel .yv-arrow.next{right:10px;}
+.yv-carousel .yv-dots{position:absolute;bottom:10px;left:0;right:0;display:flex;gap:6px;justify-content:center;z-index:3;}
+.yv-carousel .yv-dots button{width:7px;height:7px;border-radius:50%;border:none;background:rgba(255,255,255,.5);cursor:pointer;padding:0;transition:transform .2s,background .2s;}
+.yv-carousel .yv-dots button.active{background:#fff;transform:scale(1.3);}
+.yv-carousel .yv-cap{position:absolute;left:12px;bottom:9px;z-index:3;color:#fff;font-family:var(--sans,sans-serif);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:rgba(19,19,19,.5);padding:4px 10px;border-radius:3px;}
+.yv-carousel.single .yv-arrow,.yv-carousel.single .yv-dots{display:none;}
+.yv-topnav{position:sticky;top:0;z-index:9000;background:var(--black-sand,#131313);display:flex;align-items:center;justify-content:space-between;padding:10px 20px;}
+.yv-topnav .yv-burger{background:none;border:1px solid rgba(255,255,255,.3);color:#FEFAF5;font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:7px 14px;border-radius:4px;cursor:pointer;}
+.yv-topnav .yv-back{color:#FEFAF5;font-size:13px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;opacity:.85;}
+.yv-topnav .yv-back:hover{opacity:1;}
+.yv-menu{display:none;position:absolute;top:calc(100% + 4px);left:20px;background:#FEFAF5;border:0.5px solid var(--shell,#E5DBD0);border-radius:6px;box-shadow:0 12px 30px rgba(19,19,19,.18);min-width:240px;padding:6px 0;z-index:9100;}
+.yv-menu.open{display:block;}
+.yv-menu a{display:block;padding:9px 18px;color:#131313;text-decoration:none;font-size:15px;}
+.yv-menu a:hover{background:var(--dark-sand,#F3EBE2);}
+[id^="sec-"]{scroll-margin-top:64px;}
+@media (max-width:900px){.yv-carousel:not(.yv-hero){max-width:none;}.doc{box-shadow:none;}}
+@media print{.no-print{display:none!important;}.yv-topnav{display:none!important;}.doc{max-width:none!important;margin:0!important;box-shadow:none!important;}.yv-carousel{aspect-ratio:auto!important;height:auto!important;max-width:440px!important;}.yv-carousel .yv-arrow,.yv-carousel .yv-dots,.yv-carousel .yv-cap{display:none!important;}.yv-carousel .yv-track{display:block!important;height:auto!important;}.yv-carousel .yv-slide{display:none!important;}.yv-carousel .yv-slide:first-child{display:block!important;height:auto!important;page-break-inside:avoid;}}
+</style>
+
+<div class="yv-topnav no-print">
+  <div style="position:relative;">
+    <button class="yv-burger" id="yv-burger" type="button" aria-label="Sections menu">☰ Sections</button>
+    <div class="yv-menu" id="yv-menu">
+      <a href="#sec-outbound">Arrival · Apr 3</a>
+      <a href="#sec-opt1">Kyoto stay · Option 1</a>
+      <a href="#sec-opt2">Kyoto stay · Option 2</a>
+      <a href="#sec-kyoto">Kyoto days · Apr 4–6</a>
+      <a href="#sec-hakone">Hakone · Apr 7–9</a>
+      <a href="#sec-departure">Departure · Apr 10</a>
+      <a href="#sec-next">Next steps</a>
+    </div>
+  </div>
+  <a class="yv-back" href="/client">← Back to client</a>
+</div>
+
+<div class="doc">
+<div class="demo-ribbon no-print">Demo itinerary · the family, prices and properties are invented</div>
+<div class="no-print"><button class="btn-print" onclick="window.print()">Print / Save as PDF</button></div>
+
+<header class="page-header">
+  <div class="wordmark">yvetted</div>
+  <h1>Kyoto &amp; Hakone &nbsp;·&nbsp; April 2027</h1>
+  <div class="stone-rule"></div>
+  <div class="header-sub">The Example Family &nbsp;·&nbsp; Apr 3 – Apr 10</div>
+  <div class="header-byline">Prepared by Yvette</div>
+</header>
+<div class="yv-carousel yv-hero"><div class="yv-track"><div class="yv-slide ph ph-1" data-cap="Kyoto in cherry blossom season">Kyoto in cherry blossom season</div><div class="yv-slide ph ph-2" data-cap="Lantern-lit lanes, Higashiyama">Lantern-lit lanes, Higashiyama</div><div class="yv-slide ph ph-3" data-cap="Lake Ashi and Mount Fuji">Lake Ashi and Mount Fuji</div></div><button class="yv-arrow prev" type="button" aria-label="Previous">‹</button><button class="yv-arrow next" type="button" aria-label="Next">›</button><div class="yv-dots"></div></div>
+
+<div class="intro-block">
+  <p>Seven nights timed for the tail end of cherry blossom: four in Kyoto, then three in the mountains at Hakone with a private onsen. The flights, train and Hakone stay are settled. The one decision left is <strong>where you stay in Kyoto</strong> &mdash; two options below, priced side by side.</p>
+  <p>Everything marked <em>Pending</em> is in hand; I&rsquo;ll confirm each one as booking windows open.</p>
+</div>
+<div class="glance">
+  <div><div class="g-label">Dates</div><div class="g-val">Apr 3 – 10, 2027</div></div>
+  <div><div class="g-label">Guests</div><div class="g-val">2 adults, 2 children (9 &amp; 12)</div></div>
+  <div><div class="g-label">Route</div><div class="g-val">Osaka → Kyoto → Hakone → Tokyo</div></div>
+  <div><div class="g-label">Your decision</div><div class="g-val">Kyoto stay: Option 1 or 2</div></div>
+</div>
+
+<div class="region-sep" id="sec-outbound">Arrival &nbsp;·&nbsp; Apr 3</div>
+<div class="day-row"><div class="day-date"><div class="dm">Apr 3</div><span class="dow">Sat</span></div><div class="day-cell"><div class="seg"><div class="seg-label">Outbound Flight · Full Family&nbsp;<span class="badge confirmed" style="margin-left:0;">Confirmed</span></div><div class="seg-title">Singapore (SIN) → Osaka Kansai (KIX)</div><div class="seg-body"><div class="flight-route"><span class="iata-big">SIN</span><div class="route-arrow"></div><span class="iata-big">KIX</span></div><div class="flight-meta"><span><strong>7:40 AM</strong>Depart</span><span><strong>3:05 PM</strong>Arrive</span><span><strong>6h 25m</strong>Duration</span></div></div></div><hr class="seg-divider"><div class="seg"><div class="seg-label">Arrival Transfer&nbsp;<span class="badge confirmed" style="margin-left:0;">Confirmed</span></div><div class="seg-title">Kansai Airport → Kyoto, private van</div><div class="seg-body">Meet &amp; greet at arrivals with a name board &middot; about 90 minutes to Kyoto<br>Vehicle class: Toyota Alphard or similar, room for 4 large cases<div class="yv-carousel" style="margin:12px 0 8px;"><div class="yv-track"><div class="yv-slide ph ph-1" data-cap="Arrival van, exterior"></div><div class="yv-slide ph ph-2" data-cap="Arrival van, interior"></div></div><button class="yv-arrow prev" type="button" aria-label="Previous">‹</button><button class="yv-arrow next" type="button" aria-label="Next">›</button><div class="yv-dots"></div><div class="yv-cap"></div></div><div style="display:flex; align-items:flex-start; gap:8px; background:var(--dark-sand); border-left:3px solid var(--stone); border-radius:4px; padding:8px 12px; margin-top:10px;"><span style="font-size:15px; line-height:1; margin-top:1px; color:var(--stone);">ℹ</span><span style="font-size:14px; color:var(--dark-stone); line-height:1.5;"><strong style="color:var(--black-sand);">Booked direct</strong> &mdash; better rate than the partner quote, same vehicle class.</span></div></div></div></div></div>
+
+
+<div class="region-sep" id="sec-opt1">Kyoto stay &nbsp;·&nbsp; Option 1</div>
+<div class="opt-head">
+  <div class="opt-eyebrow">Option 1 · Traditional</div>
+  <h2 class="opt-title">A ryokan in Higashiyama</h2>
+  <p class="opt-place">Steps from Yasaka Shrine, on a quiet stone lane</p>
+</div>
+<div class="opt-body">
+  <div class="yv-carousel" style="margin:12px 0 8px;"><div class="yv-track"><div class="yv-slide ph ph-1" data-cap="Garden suite"></div><div class="yv-slide ph ph-2" data-cap="Breakfast in the room"></div><div class="yv-slide ph ph-3" data-cap="Private cypress bath"></div><div class="yv-slide ph ph-4" data-cap="The lane at dusk"></div></div><button class="yv-arrow prev" type="button" aria-label="Previous">‹</button><button class="yv-arrow next" type="button" aria-label="Next">›</button><div class="yv-dots"></div><div class="yv-cap"></div></div>
+  <p class="opt-lead">Twelve rooms, tatami and futon, a kaiseki dinner served in your suite on two of the nights. It is the more memorable stay and puts you in walking distance of the temples at first light. The trade-off is space: one large suite for four, and futons rather than beds.</p>
+  <div class="fact-grid"><div><div class="fact-lab">Room</div><div class="fact-val">Garden suite, sleeps 4</div></div><div><div class="fact-lab">Meals</div><div class="fact-val">Breakfast daily + 2 kaiseki dinners</div></div><div><div class="fact-lab">Walk to</div><div class="fact-val">Yasaka Shrine, 3 min</div></div><div><div class="fact-lab">Cancel</div><div class="fact-val">Free until 30 days out</div></div></div>
+  <div class="sub-h">What&rsquo;s included</div>
+  <ul class="tick"><li>Four nights in the garden suite</li><li>Japanese breakfast every morning</li><li>Two in-room kaiseki dinners</li><li>Private cypress-wood bath</li><li>Advisor perks: early check-in when available, welcome amenity</li></ul>
+  <div class="sub-h">What sits outside the price</div>
+  <ul class="tick"><li>Lunches and the other two dinners</li><li>City taxis</li><li>Personal spending</li></ul>
+  <div class="price-card">
+    <div><div class="price-label">Estimated total &middot; 4 nights, 4 guests</div>
+      <div class="price-amount">$7,480</div><div class="price-pp">$1,870 per person</div></div>
+    <div class="price-side">The more Japanese of the two, with two dinners inside the price. Best if the trip is about the experience more than comfort.</div>
+  </div>
+</div>
+
+
+<div class="region-sep" id="sec-opt2">Kyoto stay &nbsp;·&nbsp; Option 2</div>
+<div class="opt-head">
+  <div class="opt-eyebrow">Option 2 · Contemporary</div>
+  <h2 class="opt-title">A design hotel on the Kamo River</h2>
+  <p class="opt-place">Riverside, between Gion and the downtown arcades</p>
+</div>
+<div class="opt-body">
+  <div class="yv-carousel" style="margin:12px 0 8px;"><div class="yv-track"><div class="yv-slide ph ph-1" data-cap="River-view rooms"></div><div class="yv-slide ph ph-2" data-cap="The lobby garden"></div><div class="yv-slide ph ph-3" data-cap="Rooftop at sunset"></div><div class="yv-slide ph ph-4" data-cap="Family room layout"></div></div><button class="yv-arrow prev" type="button" aria-label="Previous">‹</button><button class="yv-arrow next" type="button" aria-label="Next">›</button><div class="yv-dots"></div><div class="yv-cap"></div></div>
+  <p class="opt-lead">Two connecting river-view rooms with proper beds, a pool the children will use daily, and a concierge who can secure tables the ryokan can&rsquo;t. Easier for a family; less of a sense of place.</p>
+  <div class="fact-grid"><div><div class="fact-lab">Rooms</div><div class="fact-val">2 connecting river-view rooms</div></div><div><div class="fact-lab">Meals</div><div class="fact-val">Breakfast daily</div></div><div><div class="fact-lab">Walk to</div><div class="fact-val">Gion, 8 min</div></div><div><div class="fact-lab">Cancel</div><div class="fact-val">Free until 7 days out</div></div></div>
+  <div class="sub-h">What&rsquo;s included</div>
+  <ul class="tick"><li>Four nights in two connecting rooms</li><li>Breakfast for four daily</li><li>Pool and spa access</li><li>Advisor perks: $100 hotel credit, room upgrade when available</li></ul>
+  <div class="sub-h">What sits outside the price</div>
+  <ul class="tick"><li>Lunches and dinners</li><li>City taxis</li><li>Spa treatments</li></ul>
+  <div class="price-card">
+    <div><div class="price-label">Estimated total &middot; 4 nights, 4 guests</div>
+      <div class="price-amount">$8,960</div><div class="price-pp">$2,240 per person</div></div>
+    <div class="price-side">More space, beds, a pool and more flexible cancellation. Costs $1,480 more and dinners sit outside the price.</div>
+  </div>
+</div>
+
+<div class="region-sep" id="sec-kyoto">Kyoto &nbsp;·&nbsp; Apr 4–6</div>
+<div class="day-row"><div class="day-date"><div class="dm">Apr 4</div><span class="dow">Sun</span></div><div class="day-cell"><div class="seg"><div class="seg-label">Early Morning · Full Family&nbsp;<span class="badge confirmed" style="margin-left:0;">Confirmed</span></div><div class="seg-title">Fushimi Inari before the crowds</div><div class="seg-body">Car at 6:30 AM &middot; walk the lower gates before 8, back for breakfast<br><span style="font-size:13.5px;">At this time of year the shrine is crowded by 9. An early start makes the difference.</span></div></div><hr class="seg-divider"><div class="seg"><div class="seg-label">Afternoon · Full Family&nbsp;<span class="badge pending" style="margin-left:0;">Pending</span></div><div class="seg-title">Private tea ceremony in a machiya townhouse</div><div class="seg-body">2:00–3:30 PM &middot; English-speaking host &middot; children welcome from age 6</div></div></div></div>
+<div class="day-row"><div class="day-date"><div class="dm">Apr 5</div><span class="dow">Mon</span></div><div class="day-cell"><div class="seg"><div class="seg-label">Morning · Full Family&nbsp;<span class="badge pending" style="margin-left:0;">Pending</span></div><div class="seg-title">Arashiyama with a private guide</div><div class="seg-body">Bamboo grove at opening, then the Okochi Sanso garden and a river boat back<br>Guide for 5 hours, car and driver for the day<div class="yv-carousel" style="margin:12px 0 8px;"><div class="yv-track"><div class="yv-slide ph ph-1" data-cap="Bamboo grove, early"></div><div class="yv-slide ph ph-2" data-cap="Garden villa"></div><div class="yv-slide ph ph-3" data-cap="River boat"></div></div><button class="yv-arrow prev" type="button" aria-label="Previous">‹</button><button class="yv-arrow next" type="button" aria-label="Next">›</button><div class="yv-dots"></div><div class="yv-cap"></div></div></div></div><hr class="seg-divider"><div class="seg"><div class="seg-label">Evening · 2 Adults&nbsp;<span class="badge tbd" style="margin-left:0;">TBD</span></div><div class="seg-title">Dinner in Gion</div><div class="seg-body">Restaurant to be confirmed.<br><a href="/guides/tokyo/restaurants" style="color:var(--indigo); font-size:13.5px;">See how the restaurant guides work →</a></div></div></div></div>
+<div class="day-row"><div class="day-date"><div class="dm">Apr 6</div><span class="dow">Tue</span></div><div class="day-cell"><div class="seg"><div class="seg-label">Full Day · Optional&nbsp;<span class="badge tbd" style="margin-left:0;">Optional</span></div><div class="seg-title">Nara day trip</div><div class="seg-body">45 minutes by train &middot; deer park and Todai-ji &middot; easy to drop if the family wants a slower day</div></div></div></div>
+
+<div class="region-sep" id="sec-hakone">Hakone &nbsp;·&nbsp; Apr 7–9 &nbsp;·&nbsp; Shinkansen Kyoto → Odawara &nbsp;·&nbsp; 2h 05m</div>
+<div class="day-row"><div class="day-date"><div class="dm">Apr 7</div><span class="dow">Wed</span></div><div class="day-cell"><div class="seg"><div class="seg-label">Train · Green Car&nbsp;<span class="badge pending" style="margin-left:0;">Booking opens Mar 7</span></div><div class="seg-title">Kyoto → Odawara, then private car to Hakone</div><div class="seg-body">Reserved Green Car seats, luggage sent ahead the day before so the family travels light<div style="display:flex; align-items:flex-start; gap:8px; background:var(--dark-sand); border-left:3px solid var(--stone); border-radius:4px; padding:8px 12px; margin-top:10px;"><span style="font-size:15px; line-height:1; margin-top:1px; color:var(--stone);">ℹ</span><span style="font-size:14px; color:var(--dark-stone); line-height:1.5;"><strong style="color:var(--black-sand);">Luggage forwarding</strong> &mdash; cases collected at the Kyoto hotel on Apr 6, waiting in Hakone on arrival.</span></div></div></div><hr class="seg-divider"><div class="seg"><div class="seg-label">Hotel · Check-In · 3 Nights&nbsp;<span class="badge confirmed" style="margin-left:0;">Confirmed</span></div><div class="seg-title">Mountain onsen hotel, Gora</div><div class="seg-body">Two connecting rooms, each with a private open-air hot spring bath<br><em style="font-size:14px;">Fuji views from the upper floors requested, subject to availability.</em><div class="yv-carousel" style="margin:12px 0 8px;"><div class="yv-track"><div class="yv-slide ph ph-1" data-cap="Private open-air bath"></div><div class="yv-slide ph ph-2" data-cap="Room with mountain view"></div><div class="yv-slide ph ph-3" data-cap="Dining room"></div></div><button class="yv-arrow prev" type="button" aria-label="Previous">‹</button><button class="yv-arrow next" type="button" aria-label="Next">›</button><div class="yv-dots"></div><div class="yv-cap"></div></div></div></div></div></div>
+<div class="day-row"><div class="day-date"><div class="dm">Apr 8</div><span class="dow">Thu</span></div><div class="day-cell"><div class="seg"><div class="seg-label">Full Day · Full Family&nbsp;<span class="badge confirmed" style="margin-left:0;">Confirmed</span></div><div class="seg-title">The Hakone loop</div><div class="seg-body">Ropeway over the volcanic valley, pirate-ship cruise across Lake Ashi, open-air museum in the afternoon</div></div></div></div>
+
+<div class="region-sep" id="sec-departure">Departure &nbsp;·&nbsp; Apr 10</div>
+<div class="day-row"><div class="day-date"><div class="dm">Apr 10</div><span class="dow">Sat</span></div><div class="day-cell"><div class="seg"><div class="seg-label">Morning · Transfer&nbsp;<span class="badge confirmed" style="margin-left:0;">Confirmed</span></div><div class="seg-title">Hakone → Tokyo Haneda (HND)</div><div class="seg-body">Private car &middot; leave 8:30 AM &middot; about 2 hours</div></div><hr class="seg-divider"><div class="seg"><div class="seg-label">Return Flight · Full Family&nbsp;<span class="badge confirmed" style="margin-left:0;">Confirmed</span></div><div class="seg-title">Tokyo Haneda (HND) → Singapore (SIN)</div><div class="seg-body"><div class="flight-meta"><span><strong>1:35 PM</strong>Depart</span><span><strong>8:10 PM</strong>Arrive</span><span><strong>7h 35m</strong>Duration</span></div></div></div></div></div>
+
+<div class="next-steps" id="sec-next">
+  <h2>Next steps</h2>
+  <ol class="step-list">
+    <li><span class="step-num">1</span><span><strong>Choose the Kyoto stay</strong> &mdash; Option 1 or 2. I&rsquo;ll hold both rates until Friday.</span></li>
+    <li><span class="step-num">2</span><span>Confirm whether Nara stays in or the day stays open.</span></li>
+    <li><span class="step-num">3</span><span>I book the tea ceremony and Arashiyama guide once the stay is set, and the train the day the booking window opens.</span></li>
+  </ol>
+</div>
+<p class="footnote" style="padding-top:18px;">Prices are estimates in USD and include taxes unless noted. Demo page: the family, properties and prices are invented to show the format.</p>
+</div>
+
+<script>
+(function(){
+  function ready(fn){ if(document.readyState!=='loading'){fn();} else {document.addEventListener('DOMContentLoaded',fn);} }
+  ready(function(){
+    document.querySelectorAll('.yv-carousel').forEach(function(c){
+      var track=c.querySelector('.yv-track');
+      var slides=c.querySelectorAll('.yv-slide');
+      var cap=c.querySelector('.yv-cap');
+      function setcap(k){ if(cap){ var t=slides[k]&&slides[k].getAttribute('data-cap')||''; cap.textContent=t; cap.style.display=t?'block':'none'; } }
+      if(slides.length<2){ c.classList.add('single'); setcap(0); return; }
+      var i=0; var dots=c.querySelector('.yv-dots');
+      if(dots){ slides.forEach(function(_,k){ var b=document.createElement('button'); b.type='button'; if(k===0)b.className='active'; b.addEventListener('click',function(e){e.stopPropagation();go(k);}); dots.appendChild(b); }); }
+      function go(n){ i=(n+slides.length)%slides.length; track.style.transform='translateX('+(-i*100)+'%)'; if(dots){ dots.querySelectorAll('button').forEach(function(b,k){ b.classList.toggle('active',k===i); }); } setcap(i); }
+      var p=c.querySelector('.yv-arrow.prev'), nx=c.querySelector('.yv-arrow.next');
+      if(p)p.addEventListener('click',function(e){e.stopPropagation();go(i-1);});
+      if(nx)nx.addEventListener('click',function(e){e.stopPropagation();go(i+1);});
+      setcap(0);
+    });
+    var burger=document.getElementById('yv-burger'), menu=document.getElementById('yv-menu');
+    if(burger&&menu){
+      burger.addEventListener('click',function(e){ e.stopPropagation(); menu.classList.toggle('open'); });
+      document.addEventListener('click',function(){ menu.classList.remove('open'); });
+      menu.addEventListener('click',function(e){ if(e.target.tagName==='A') menu.classList.remove('open'); });
+    }
+  });
+})();
+</script>
+</body>
+</html>

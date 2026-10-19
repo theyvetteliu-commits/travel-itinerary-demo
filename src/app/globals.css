@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+:root {
+  --color-blush: #F4D9D4;
+  --color-peach: #F6E7D6;
+  --color-sand: #F8EFE2;
+  --color-cream: #FBF6EF;
+  --color-ink: #1C1714;
+  --color-clay: #9B5A44;
+  --color-taupe: #8D857A;
+  --color-border: #EBE2D7;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
